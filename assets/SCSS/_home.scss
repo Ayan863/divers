@@ -195,14 +195,34 @@ header {
 
                 .pages {
                     position: relative;
-
-                    &:hover {
-                        .pagesMenu {
-                            opacity: 1;
-                            visibility: visible;
-                            transition: visibility 0s, opacity 2s linear;
+                    &:hover{
+                        .visiable{
+                            display: block;
                         }
                     }
+
+                    .visiable {
+                        position: absolute;
+                        top: 1rem;
+                        padding: 1rem;
+                        width: 260px;
+                        height: 296px;
+                        display: none;
+                    }
+
+                    .pagesMenu {
+                        visibility: visible;
+                        opacity: 1;
+
+                    }
+
+                    // &:hover {
+                    // .pagesMenu {
+                    //     opacity: 1;
+                    //     visibility: visible;
+                    //     transition: visibility 0s, opacity 2s linear;
+                    // }
+                    // }
 
                     .pagesMenu {
                         width: 260px;
@@ -358,7 +378,9 @@ header {
         .carousel-inner {
             width: 100%;
             height: 778px;
-
+            .dir{
+                width: 10px;
+            }
             .carousel-item {
                 img {
                     height: 778px;
@@ -403,7 +425,7 @@ header {
                         transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 
                         &:hover {
-                            background-color: #0056b3;
+                            background-color: #0056b3 !important;
                             color: #e2e2e2;
                             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                         }
@@ -509,14 +531,16 @@ header {
     background-image: url("https://livedemo00.template-help.com/wt_prod-22021/images/parallax-1.jpg");
     width: 100%;
     height: 404px;
-
+    background-repeat: no-repeat;
     background-attachment: fixed;
+
     .container {
         display: flex !important;
         align-items: center !important;
         justify-content: space-around !important;
         height: 404px;
         width: 70%;
+        text-align: center;
     }
 
 
@@ -527,6 +551,7 @@ header {
     .num {
         font-family: "Comfortaa", cursive;
         font-size: 58px;
+        text-align: center;
     }
 
     .txt {
