@@ -45,10 +45,15 @@ header .navbar .contact a {
 header .navbar .contact a:hover {
   color: #f8ea49;
 }
+header .navbar .logo i {
+  display: none;
+  padding: 10px;
+}
 header .navbar .right {
   position: relative;
   color: #fff;
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 header .navbar .right .header-lan:hover + .otherL {
@@ -57,18 +62,11 @@ header .navbar .right .header-lan:hover + .otherL {
   transition: visibility 0s, opacity 2s;
 }
 header .navbar .right .otherL {
-  position: absolute;
-  left: -30px;
-  bottom: 0;
-  top: 16px;
   width: 51px;
   height: 102px;
   background-color: #fff;
-  visibility: hidden;
+  display: none !important;
   opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 header .navbar .right .otherL span {
   color: gray;
@@ -81,18 +79,16 @@ header .navbar .right .otherL span:hover {
   text-align: center;
   color: #fff;
 }
-header .navbar .right i {
-  position: absolute;
-  right: 30px;
-  bottom: -6px;
-}
-header .navbar .right i:hover {
+header .navbar .right .fa-magnifying-glass:hover {
   color: #f8ea49;
 }
 header .navbar .right .header-lan {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header .navbar .right .header-lan .en {
   color: black;
   background-color: #fff;
   width: 2rem;
@@ -101,6 +97,11 @@ header .navbar .right .header-lan {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+}
+header .navbar .right .header-lan .en:hover .otherL {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 header .navbarMain {
   height: 71px;
@@ -127,6 +128,7 @@ header .navbarMain nav ul {
 header .navbarMain nav ul li {
   flex: 1;
   text-align: center;
+  height: 30px;
 }
 header .navbarMain nav ul li a {
   text-decoration: none;
@@ -167,36 +169,45 @@ header .navbarMain nav ul .menu a {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   transition: all 0.25s ease-in-out;
 }
-header .navbarMain nav ul .pages {
-  position: relative;
-}
-header .navbarMain nav ul .pages:hover .visiable {
-  display: block;
-}
-header .navbarMain nav ul .pages .visiable {
+header .navbarMain nav ul .visiable {
   position: absolute;
-  top: 1rem;
+  top: 0;
   padding: 1rem;
   width: 260px;
   height: 296px;
   display: none;
+  transition: 2s all ease;
+}
+header .navbarMain nav ul .pages {
+  position: relative;
+  transition: 2s all ease;
+}
+header .navbarMain nav ul .pages:hover .visiable {
+  display: block;
+}
+header .navbarMain nav ul .pages:hover .head {
+  color: #f8ea49;
 }
 header .navbarMain nav ul .pages .pagesMenu {
   visibility: visible;
   opacity: 1;
-}
-header .navbarMain nav ul .pages .pagesMenu {
   width: 260px;
   height: 296px;
   left: -7px;
 }
 header .navbarMain nav ul .blog {
   position: relative;
+  transition: 2s all ease;
 }
-header .navbarMain nav ul .blog:hover .blogMenu {
-  opacity: 1;
+header .navbarMain nav ul .blog:hover .visiable {
+  display: block;
+}
+header .navbarMain nav ul .blog:hover .head {
+  color: #f8ea49;
+}
+header .navbarMain nav ul .blog .blogMenu {
   visibility: visible;
-  transition: visibility 0s, opacity 2s linear;
+  opacity: 1;
 }
 header .navbarMain nav ul .blog .blogMenu {
   width: 260px;
@@ -205,11 +216,18 @@ header .navbarMain nav ul .blog .blogMenu {
 }
 header .navbarMain nav ul .gallery {
   position: relative;
+  transition: 2s all ease;
 }
-header .navbarMain nav ul .gallery:hover .galleryMenu {
+header .navbarMain nav ul .gallery .galleryMenu {
   opacity: 1;
   visibility: visible;
   transition: visibility 0s, opacity 2s linear;
+}
+header .navbarMain nav ul .gallery:hover .visiable {
+  display: block;
+}
+header .navbarMain nav ul .gallery:hover .head {
+  color: #f8ea49;
 }
 header .navbarMain nav ul .gallery .galleryMenu {
   width: 260px;
@@ -219,15 +237,19 @@ header .navbarMain nav ul .gallery .galleryMenu {
 header .navbarMain nav ul .elements {
   position: relative;
 }
-header .navbarMain nav ul .elements:hover .elementsMenu {
+header .navbarMain nav ul .elements .elementsMenu {
   opacity: 1;
   visibility: visible;
-  transition: visibility 0s, opacity 2s linear;
+  transition: 2s all ease;
+}
+header .navbarMain nav ul .elements:hover .visiable {
+  display: block;
+}
+header .navbarMain nav ul .elements:hover .head {
+  color: #f8ea49;
 }
 header .navbarMain nav ul .elements .elementsMenu {
   position: absolute;
-  opacity: 0;
-  visibility: hidden;
   background-color: #fff;
   width: 756px;
   height: 409px;
@@ -319,6 +341,7 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .sec1 #carouselExample .carousel-inner .carousel-item .word button {
+  position: relative;
   background-color: #f8ea49;
   color: black;
   padding: 10px 20px;
@@ -328,12 +351,30 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.sec1 #carouselExample .carousel-inner .carousel-item .word button::after {
+  content: "";
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: -45px;
+  right: 0;
+  border-radius: 50%;
+  display: block;
+  transition: 0.5s;
 }
 .sec1 #carouselExample .carousel-inner .carousel-item .word button:hover {
-  background-color: #0056b3 !important;
-  color: #e2e2e2;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #0473db;
+  color: #fff;
+}
+.sec1 #carouselExample .carousel-inner .carousel-item .word button:hover::after {
+  background-color: #f8ea49;
+  transform: scale(0);
+}
+.sec1 #carouselExample .dir {
+  width: 3rem;
 }
 .sec1 #carouselExample .dir .direct {
   position: absolute;
@@ -378,6 +419,7 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
 
 .sec2 {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   width: 100%;
@@ -426,10 +468,12 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
   justify-content: space-around !important;
   height: 404px;
   width: 70%;
+  text-align: center;
 }
 .fishSec .num {
   font-family: "Comfortaa", cursive;
   font-size: 58px;
+  text-align: center;
 }
 .fishSec .txt {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -442,6 +486,532 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
 }
 .fishSec .USA {
   width: 169px;
+}
+
+.whyChoose {
+  padding: 30px 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  gap: 30px;
+  color: #151515;
+}
+.whyChoose .photo {
+  width: 540px;
+  height: 554px;
+  position: relative;
+}
+.whyChoose .photo .dot {
+  position: absolute;
+  left: 44%;
+  display: flex;
+  bottom: -25px;
+  gap: 8px;
+}
+.whyChoose .photo .dot i {
+  color: #777;
+}
+.whyChoose .photo .dot i:hover {
+  color: #0473DB;
+}
+.whyChoose h3 {
+  font-size: 44px;
+  font-family: "Comfortaa", cursive;
+}
+.whyChoose .txt {
+  width: 523px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.whyChoose .txt .txt1 {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 0px 0 30px 0;
+  border-bottom: solid 0.5px #777;
+}
+.whyChoose .txt .txt1 i {
+  background-color: #fff;
+  font-size: 20px;
+  color: #0473DB;
+  box-shadow: 0 0 5px 0 rgba(1, 3, 4, 0.19);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.5s transform;
+  transform: rotate(0deg);
+}
+.whyChoose .txt .txt1 i:hover {
+  transform: rotate(90deg);
+  color: #fff;
+  background-color: #0473DB;
+}
+.whyChoose .txt .txt1 a {
+  font-size: 18px;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.whyChoose .txt .txt2 {
+  display: none;
+  opacity: 0;
+  transition: 2s opacity ease;
+  color: #777;
+  font-size: 15px;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.whyChoose .txt .txt2.display {
+  display: block;
+  opacity: 1;
+  transition: 20s opacity ease;
+}
+
+.testimonials {
+  filter: brightness(2);
+  height: 573px;
+  width: 100%;
+  background-color: #777;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.testimonials .header {
+  font-size: 44px;
+  font-family: "Comfortaa", cursive;
+  color: #151515;
+}
+.testimonials .text {
+  width: 870px;
+  font-size: 16px;
+  line-height: 2;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.02em;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.testimonials .clients {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px;
+}
+.testimonials .clients .client {
+  text-align: center;
+  filter: brightness(0.2);
+}
+.testimonials .clients .client img {
+  border-radius: 50%;
+}
+.testimonials .clients .client p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #151515;
+}
+.testimonials .clients .client span {
+  font-style: italic;
+  letter-spacing: 0.025em;
+  color: #0473db;
+}
+.testimonials .clients .client:hover {
+  filter: brightness(0.7);
+  transition: filter 2s;
+}
+
+.gallery {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.gallery h3 {
+  font-size: 44px;
+  font-family: "Comfortaa", cursive;
+  color: #151515;
+  padding: 20px;
+}
+.gallery .photo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.gallery .photo .imgGeneral {
+  position: relative;
+}
+.gallery .photo .imgGeneral:hover .imgTxt {
+  visibility: visible;
+  opacity: 1;
+}
+.gallery .photo .imgGeneral .imgTxt {
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+  transition: 0.5s opacity ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.gallery .photo .imgGeneral .imgTxt span {
+  font-family: "Comfortaa", cursive;
+  font-size: 22px;
+  color: #151515;
+}
+.gallery .photo .imgGeneral .imgTxt span:hover {
+  color: #0473DB;
+}
+.gallery .photo .imgGeneral .imgTxt i {
+  position: relative;
+  color: #fff;
+  background-color: #0473DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  animation: change 0.5s ease-in-out;
+}
+.gallery .photo .imgGeneral .imgTxt i:after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  color: black;
+}
+.gallery .photo .imgGeneral .imgTxt i:hover {
+  color: #151515;
+  background-color: #f8ea49;
+}
+.gallery .photo .imgGeneral .imgTxt.img1 {
+  height: 250px;
+  width: 270px;
+}
+.gallery .photo .imgGeneral .imgTxt.img2 {
+  height: 530px;
+  width: 270px;
+}
+.gallery .photo .imgGeneral .imgTxt.img3 {
+  width: 570px;
+  height: 270px;
+}
+.gallery .photo .imgGeneral .imgTxt.img4 {
+  width: 570px;
+  height: 530px;
+}
+.gallery .photo .leftGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.gallery .photo .leftGallery .top {
+  display: flex;
+  gap: 30px;
+}
+.gallery .photo .leftGallery .top .topLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.gallery .photo .leftGallery .top .topRight img {
+  width: 270px;
+  height: 530px;
+}
+.gallery .photo .rightGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.gallery .photo .rightGallery .top {
+  display: flex;
+  gap: 30px;
+}
+
+.instructors {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+.instructors h3 {
+  font-size: 44px;
+  font-family: "Comfortaa", cursive;
+  color: #151515;
+  padding: 20px;
+}
+.instructors .cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 77%;
+  justify-content: space-between;
+}
+.instructors .cards .card {
+  width: 270px;
+  border: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.instructors .cards .card:hover img {
+  transform: scale(1.1);
+}
+.instructors .cards .card .img {
+  width: 270px;
+  height: 227px;
+  overflow: hidden;
+}
+.instructors .cards .card .img img {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.instructors .cards .card .name {
+  font-family: "Comfortaa", cursive;
+  font-size: 22px;
+  color: #151515;
+  letter-spacing: 2px;
+  transition: color 0.5s ease;
+}
+.instructors .cards .card .name:hover {
+  color: #0473DB;
+}
+.instructors .cards .card .about {
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #777;
+  font-size: 15px;
+}
+.instructors .cards .card .icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.instructors .cards .card .icons i {
+  font-size: 20px;
+  transition: color 0.5s ease;
+}
+.instructors .cards .card .icons i:hover {
+  color: #0473DB;
+}
+
+.blogg {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.blogg h3 {
+  text-align: center;
+  font-size: 44px;
+  font-family: Comfortaa, cursive;
+  padding: 15px;
+}
+.blogg .cardss {
+  display: flex;
+  justify-content: center;
+}
+.blogg .cardss .cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+.blogg .cardss .cards .card {
+  border-radius: 0;
+}
+.blogg .cardss .cards .card .img {
+  border-radius: 0;
+  height: 239px;
+  width: 370px;
+}
+.blogg .cardss .cards .card .img img {
+  border-radius: 0;
+  height: 100%;
+  width: 100%;
+}
+.blogg .cardss .cards .card:hover .img {
+  transition: transform 2s ease-in-out;
+  overflow: hidden;
+}
+.blogg .cardss .cards .card:hover img {
+  transform: scale(1.1);
+}
+.blogg .cardss .cards .card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.blogg .cardss .cards .card .card-body span,
+.blogg .cardss .cards .card .card-body p {
+  color: #777;
+  font-size: 15px;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+.blogg .cardss .cards .card .card-body p {
+  width: 318px;
+}
+.blogg .cardss .cards .card .card-body h5 {
+  color: #151515;
+  font-size: 22px;
+  font-family: Comfortaa, cursive;
+  font-weight: 200;
+  line-height: 1.36364;
+  width: 234px;
+  letter-spacing: 1px;
+}
+
+footer {
+  background-color: #2A333F;
+  height: auto;
+}
+footer .topp {
+  height: 461px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer .topp .top {
+  flex-wrap: wrap;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+footer .topp .top .gallery {
+  height: auto;
+  display: flex !important;
+  flex-direction: column;
+  align-items: start;
+}
+footer .topp .top .gallery h5 {
+  text-align: start;
+  color: #ffffff;
+  font-size: 22px;
+  font-family: "Comfortaa", cursive;
+  margin: 20px;
+}
+footer .topp .top .links h5 {
+  text-align: start;
+  color: #ffffff;
+  font-size: 22px;
+  font-family: "Comfortaa", cursive;
+  margin: 20px;
+}
+footer .topp .top .links .link {
+  display: flex;
+  gap: 15px;
+}
+footer .topp .top .links .link .stLine,
+footer .topp .top .links .link .ndLine {
+  display: flex;
+  flex-direction: column;
+}
+footer .topp .top .links .link .stLine a,
+footer .topp .top .links .link .ndLine a {
+  width: 131px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.5s ease-in;
+}
+footer .topp .top .links .link .stLine a div,
+footer .topp .top .links .link .ndLine a div {
+  width: 7px;
+  height: 2px;
+  background-color: #777;
+  transition: width 0.5s ease-in;
+}
+footer .topp .top .links .link .stLine a:hover,
+footer .topp .top .links .link .ndLine a:hover {
+  color: #0473DB;
+}
+footer .topp .top .links .link .stLine a:hover div,
+footer .topp .top .links .link .ndLine a:hover div {
+  width: 17px;
+}
+footer .topp .top .touch h5 {
+  text-align: start;
+  color: #ffffff;
+  font-size: 22px;
+  font-family: "Comfortaa", cursive;
+  margin: 20px;
+}
+footer .topp .top .touch .txt {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  width: 225px;
+}
+footer .topp .top .touch .txt i {
+  color: #ffc107;
+}
+footer .topp .top .touch .txt p {
+  color: #fff;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: all 0.5s;
+}
+footer .topp .top .touch .txt p:hover {
+  color: #0473DB;
+}
+footer .topp .top .icons {
+  display: flex;
+  gap: 15px;
+}
+footer .topp .top .icons i {
+  transition: 0.5s all;
+  color: #6E757D;
+  border: 1px solid #6E757D;
+  border-radius: 50%;
+  width: 41px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer .topp .top .icons i:hover {
+  color: #0473DB;
+  border-color: #0473DB;
+}
+footer .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 94px;
+  color: #777;
+  border-top: 1px rgba(225, 225, 225, 0.2) solid;
+}
+footer .bottom p {
+  color: rgba(225, 225, 225, 0.2);
+}
+footer .bottom p a {
+  text-decoration: none;
+  color: rgba(225, 225, 225, 0.2);
+}
+footer .bottom p a:hover {
+  color: #0473DB;
 }
 
 .animationn {
@@ -508,5 +1078,126 @@ header .navbarMain nav ul .elements .elementsMenu .rightMenu .top {
   to {
     transition: 1s;
     transform: translateY(0);
+  }
+}
+@keyframes change {
+  0% {
+    transform: scale(1);
+    background-color: #0473DB;
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    background-color: #f8ea49;
+  }
+}
+@media (max-width: 1200px) {
+  header .navbar {
+    justify-content: space-between;
+    padding: 0 30px;
+  }
+  .instructors .cards .card .img {
+    width: 210px !important;
+    height: 177px !important;
+  }
+  .card {
+    width: 290px !important;
+  }
+  .card .img {
+    width: 100% !important;
+  }
+  .card .card-text {
+    width: 100% !important;
+  }
+  .card footer {
+    height: 0;
+  }
+  .card footer .topp .top {
+    width: 100% !important;
+  }
+}
+@media (max-width: 991px) {
+  .sec2 {
+    background-image: none;
+  }
+  .fishSec .num {
+    font-size: 30px;
+  }
+  header .navbar {
+    background-color: #fff;
+    height: 56px;
+    width: 100%;
+  }
+  header .navbar .contact {
+    display: none;
+  }
+  header .navbar .logo {
+    display: flex;
+  }
+  header .navbar .logo i {
+    display: block;
+  }
+  header .navbar .right i {
+    color: #151515;
+  }
+  header .navbar .right .en {
+    color: #fff !important;
+    background-color: #0473DB !important;
+  }
+  header .navbarMain {
+    display: block;
+  }
+  header .navbarMain nav {
+    display: none;
+    border: none;
+    height: 100vh;
+    background-color: white;
+  }
+  header .navbarMain nav.active {
+    display: block;
+    position: fixed;
+  }
+  header .navbarMain nav ul {
+    flex-direction: column;
+    align-items: start;
+    height: 100vh;
+    padding: 20px;
+  }
+  header .navbarMain nav ul.ulAct {
+    position: absolute;
+    top: 56px;
+  }
+  header .navbarMain nav ul li {
+    text-align: start;
+  }
+  header .navbarMain nav ul li a {
+    color: black;
+  }
+  header .navbarMain nav ul li.gallery {
+    align-items: start;
+    justify-content: start;
+  }
+  .testimonials .text {
+    width: auto;
+  }
+  .gallery .photo .imgGeneral .imgTxt {
+    position: relative;
+    height: 100px !important;
+    visibility: visible;
+    opacity: 1;
+  }
+  .instructors .cards {
+    justify-content: center;
+  }
+  .instructors .cards .card {
+    padding: 20px;
+  }
+  footer .topp {
+    height: auto !important;
+  }
+  footer .topp .top {
+    padding: 20px;
   }
 }
